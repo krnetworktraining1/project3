@@ -1,0 +1,20 @@
+- name: install httpd
+  hosts: web
+  tasks:
+     - name: apache install
+       yum:
+            name: httpd
+            state: installed
+
+
+     - name: start httpd
+       service:
+              name: httpd
+              state: started
+
+
+
+     - name: create  index.html page
+       copy:
+            content: "hello jenkins"
+            dest: /var/www/html/index.html
